@@ -353,7 +353,7 @@ namespace StormLibSharp.Native
         /// SFileGetGlobalFlags
         /// </summary>
         /// <returns></returns>
-        [DllImport("StormLib.dll", EntryPoint = "SFileGetGlobalFlags")]
+        [DllImport("StormLib.dll", EntryPoint = "SFileGetGlobalFlags", SetLastError = true)]
         public static extern uint SFileGetGlobalFlags();
 
         /// <summary>
@@ -361,7 +361,7 @@ namespace StormLibSharp.Native
         /// </summary>
         /// <param name="dwNewFlags"></param>
         /// <returns></returns>
-        [DllImport("StormLib.dll", EntryPoint = "SFileSetGlobalFlags")]
+        [DllImport("StormLib.dll", EntryPoint = "SFileSetGlobalFlags", SetLastError = true)]
         public static extern uint SFileSetGlobalFlags(uint dwNewFlags);
 
         /// <summary>
@@ -370,7 +370,7 @@ namespace StormLibSharp.Native
         /// </summary>
         /// <param name="lcNewLocale">Locale ID to be set.</param>
         /// <returns>The function never fails and always returns lcNewLocale.</returns>
-        [DllImport("StormLib.dll", EntryPoint = "SFileSetLocale")]
+        [DllImport("StormLib.dll", EntryPoint = "SFileSetLocale", SetLastError = true)]
         public static extern uint SFileSetLocale(uint lcNewLocale);
 
         /// <summary>
@@ -378,7 +378,7 @@ namespace StormLibSharp.Native
         /// http://www.zezula.net/en/mpq/stormlib/sfilegetlocale.html
         /// </summary>
         /// <returns>The function never fails and always returns current locale ID.</returns>
-        [DllImport("StormLib.dll", EntryPoint = "SFileGetLocale")]
+        [DllImport("StormLib.dll", EntryPoint = "SFileGetLocale", SetLastError = true)]
         public static extern uint SFileGetLocale();
 
         /// <summary>
@@ -390,7 +390,7 @@ namespace StormLibSharp.Native
         /// <param name="dwFlags">Flags that specify additional options about how to open the file.</param>
         /// <param name="phMpq">Pointer to a variable of HANDLE type, where the opened archive handle will be stored. </param>
         /// <returns>When the function succeeds, it returns nonzero and phMPQ contains the handle of the opened archive. When the archive cannot be open, function returns false and GetLastError gives the error code.</returns>
-        [DllImport("StormLib.dll", EntryPoint = "SFileOpenArchive")]
+        [DllImport("StormLib.dll", EntryPoint = "SFileOpenArchive", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.I1)]
         public static extern bool SFileOpenArchive([In, MarshalAs(UnmanagedType.LPStr)] string szMpqName, uint dwPriority, uint dwFlags, ref IntPtr phMpq);
 
@@ -403,7 +403,7 @@ namespace StormLibSharp.Native
         /// <param name="dwMaxFileCount">File count limit. The value must be in range of HASH_TABLE_SIZE_MIN (0x04) and HASH_TABLE_SIZE_MAX (0x80000). StormLib will automatically calculate size of hash tables and block tables from this value.</param>
         /// <param name="phMpq">Pointer to a variable of HANDLE type, where the opened archive handle will be stored. </param>
         /// <returns>When the function succeeds, it returns nonzero and phMPQ contains the handle of the new archive. On an error, the function returns false and GetLastError gives the error code.</returns>
-        [DllImport("StormLib.dll", EntryPoint = "SFileCreateArchive")]
+        [DllImport("StormLib.dll", EntryPoint = "SFileCreateArchive", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.I1)]
         public static extern bool SFileCreateArchive([In, MarshalAs(UnmanagedType.LPStr)] string szMpqName, uint dwFlags, uint dwMaxFileCount, ref IntPtr phMpq);
 
@@ -413,7 +413,7 @@ namespace StormLibSharp.Native
         /// </summary>
         /// <param name="hMpq">Handle to an open MPQ.</param>
         /// <returns>When the function succeeds, it returns nonzero. On an error, the function returns false and GetLastError gives the error code.</returns>
-        [DllImport("StormLib.dll", EntryPoint = "SFileFlushArchive")]
+        [DllImport("StormLib.dll", EntryPoint = "SFileFlushArchive", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.I1)]
         public static extern bool SFileFlushArchive(IntPtr hMpq);
 
@@ -423,7 +423,7 @@ namespace StormLibSharp.Native
         /// </summary>
         /// <param name="hMpq">Handle to an open MPQ.</param>
         /// <returns>When the function succeeds, it returns nonzero. On an error, the function returns false and GetLastError gives the error code.</returns>
-        [DllImport("StormLib.dll", EntryPoint = "SFileCloseArchive")]
+        [DllImport("StormLib.dll", EntryPoint = "SFileCloseArchive", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.I1)]
         public static extern bool SFileCloseArchive(IntPtr hMpq);
 
@@ -434,7 +434,7 @@ namespace StormLibSharp.Native
         /// <param name="hMpq">Handle to an open MPQ. </param>
         /// <param name="szListFile">Listfile name to add. If this parameter is NULL, the function adds the internal listfile from the MPQ, if present. Adding the same listfile multiple times has no effect.</param>
         /// <returns>When the function succeeds, it returns ERROR_SUCCESS. On an error, the function returns error code.</returns>
-        [DllImport("StormLib.dll", EntryPoint = "SFileAddListFile")]
+        [DllImport("StormLib.dll", EntryPoint = "SFileAddListFile", SetLastError = true)]
         public static extern int SFileAddListFile(IntPtr hMpq, [In, MarshalAs(UnmanagedType.LPStr)] string szListFile);
 
         /// <summary>
@@ -445,7 +445,7 @@ namespace StormLibSharp.Native
         /// <param name="szListFile"> Allows to specify an additional listfile, that will be used together with internal listfile. Can be NULL.</param>
         /// <param name="bReserved">Not used, set to zero.</param>
         /// <returns>When the function succeeds, it returns nonzero. On an error, the function returns false and GetLastError gives the error code.</returns>
-        [DllImportAttribute("StormLib.dll", EntryPoint = "SFileCompactArchive")]
+        [DllImportAttribute("StormLib.dll", EntryPoint = "SFileCompactArchive", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.I1)]
         public static extern bool SFileCompactArchive(IntPtr hMpq, [In, MarshalAs(UnmanagedType.LPStr)] string szListFile = null, [MarshalAs(UnmanagedType.I1)] bool bReserved = false);
 
@@ -457,26 +457,26 @@ namespace StormLibSharp.Native
         /// <param name="CompactCB">Pointer to the callback function.</param>
         /// <param name="pvData">User defined data that will be passed to the callback function. </param>
         /// <returns>The function never fails and always sets the callback.</returns>
-        [DllImport("StormLib.dll", EntryPoint = "SFileSetCompactCallback")]
+        [DllImport("StormLib.dll", EntryPoint = "SFileSetCompactCallback", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.I1)]
         public static extern bool SFileSetCompactCallback(IntPtr hMpq, SFILE_COMPACT_CALLBACK CompactCB, IntPtr pvData);
 
         /// Return Type: boolean
         ///hMpq: HANDLE->void*
         ///dwMaxFileCount: DWORD->unsigned int
-        [DllImport("StormLib.dll", EntryPoint = "SFileSetMaxFileCount")]
+        [DllImport("StormLib.dll", EntryPoint = "SFileSetMaxFileCount", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.I1)]
         public static extern bool SFileSetMaxFileCount(IntPtr hMpq, uint dwMaxFileCount);
 
         /// Return Type: DWORD->unsigned int
         ///hMpq: HANDLE->void*
-        [DllImport("StormLib.dll", EntryPoint = "SFileGetAttributes")]
+        [DllImport("StormLib.dll", EntryPoint = "SFileGetAttributes", SetLastError = true)]
         public static extern uint SFileGetAttributes(IntPtr hMpq);
 
         /// Return Type: boolean
         ///hMpq: HANDLE->void*
         ///dwFlags: DWORD->unsigned int
-        [DllImport("StormLib.dll", EntryPoint = "SFileSetAttributes")]
+        [DllImport("StormLib.dll", EntryPoint = "SFileSetAttributes", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.I1)]
         public static extern bool SFileSetAttributes(IntPtr hMpq, uint dwFlags);
 
@@ -484,7 +484,7 @@ namespace StormLibSharp.Native
         /// Return Type: boolean
         ///hMpq: HANDLE->void*
         ///szFileName: char*
-        [DllImport("StormLib.dll", EntryPoint = "SFileUpdateFileAttributes")]
+        [DllImport("StormLib.dll", EntryPoint = "SFileUpdateFileAttributes", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.I1)]
         public static extern bool SFileUpdateFileAttributes(IntPtr hMpq, [In, MarshalAs(UnmanagedType.LPStr)] string szFileName); 
         #endregion
@@ -499,7 +499,7 @@ namespace StormLibSharp.Native
         /// <param name="szPatchPathPrefix">Pointer to patch prefix to file names.</param>
         /// <param name="dwFlags">Reserved for future use.</param>
         /// <returns>When the function succeeds, it returns nonzero. When the archive cannot be added as patch archive, function returns false and GetLastError gives the error code.</returns>
-        [DllImport("StormLib.dll", EntryPoint = "SFileOpenPatchArchive")]
+        [DllImport("StormLib.dll", EntryPoint = "SFileOpenPatchArchive", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.I1)]
         public static extern bool SFileOpenPatchArchive(IntPtr hMpq, [In, MarshalAs(UnmanagedType.LPStr)] string szPatchMpqName, [In, MarshalAs(UnmanagedType.LPStr)] string szPatchPathPrefix, uint dwFlags);
 
@@ -509,7 +509,7 @@ namespace StormLibSharp.Native
         /// </summary>
         /// <param name="hMpq">Handle to a MPQ in question.</param>
         /// <returns>The function returns true, when there is at least one patch added to the MPQ. Otherwise, it returns false.</returns>
-        [DllImport("StormLib.dll", EntryPoint = "SFileIsPatchedArchive")]
+        [DllImport("StormLib.dll", EntryPoint = "SFileIsPatchedArchive", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.I1)]
         public static extern bool SFileIsPatchedArchive(IntPtr hMpq); 
         #endregion
@@ -524,7 +524,7 @@ namespace StormLibSharp.Native
         /// <param name="dwSearchScope">Value that specifies how exactly the file should be open.</param>
         /// <param name="phFile">Pointer to a variable of HANDLE type, that will receive HANDLE to the open file.</param>
         /// <returns>When the function succeeds, it returns nonzero and phFile contains the handle of the opened file. When the file cannot be open, function returns false and GetLastError gives the error code.</returns>
-        [DllImport("StormLib.dll", EntryPoint = "SFileOpenFileEx")]
+        [DllImport("StormLib.dll", EntryPoint = "SFileOpenFileEx", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.I1)]
         public static extern bool SFileOpenFileEx(IntPtr hMpq, [In, MarshalAs(UnmanagedType.LPStr)] string szFileName, uint dwSearchScope, ref IntPtr phFile);
 
@@ -535,7 +535,7 @@ namespace StormLibSharp.Native
         /// <param name="hFile">Handle to an open file. The file handle must have been created by SFileOpenFileEx.</param>
         /// <param name="pdwFileSizeHigh">Receives high 32 bits of the a file size.</param>
         /// <returns>When the function succeeds, it returns lower 32-bit of the file size. On an error, it returns SFILE_INVALID_SIZE and GetLastError returns an error code.</returns>
-        [DllImport("StormLib.dll", EntryPoint = "SFileGetFileSize")]
+        [DllImport("StormLib.dll", EntryPoint = "SFileGetFileSize", SetLastError = true)]
         public static extern uint SFileGetFileSize(IntPtr hFile, ref uint pdwFileSizeHigh);
 
         /// <summary>
@@ -547,7 +547,7 @@ namespace StormLibSharp.Native
         /// <param name="plFilePosHigh">Pointer to a high 32 bits of new position in the file.</param>
         /// <param name="dwMoveMethod">The starting point for the file pointer move.</param>
         /// <returns>When the function succeeds, it returns lower 32-bit of the file size. On an error, it returns SFILE_INVALID_SIZE and GetLastError returns an error code.</returns>
-        [DllImport("StormLib.dll", EntryPoint = "SFileSetFilePointer")]
+        [DllImport("StormLib.dll", EntryPoint = "SFileSetFilePointer", SetLastError = true)]
         public static extern uint SFileSetFilePointer(IntPtr hFile, int lFilePos, ref int plFilePosHigh, uint dwMoveMethod);
 
         /// <summary>
@@ -560,7 +560,7 @@ namespace StormLibSharp.Native
         /// <param name="pdwRead">Pointer to DWORD that will receive number of bytes read.</param>
         /// <param name="lpOverlapped">If hFile is handle to a local disk file, lpOverlapped is passed to ReadFile. Otherwise not used.</param>
         /// <returns>When all requested bytes have been read, the function returns true.When less than requested bytes have been read, the function returns false and GetLastError returns ERROR_HANDLE_EOF. If an error occured, the function returns false and GetLastError returns an error code different from ERROR_HANDLE_EOF. </returns>
-        [DllImport("StormLib.dll", EntryPoint = "SFileReadFile")]
+        [DllImport("StormLib.dll", EntryPoint = "SFileReadFile", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.I1)]
         public static extern bool SFileReadFile(IntPtr hFile, IntPtr lpBuffer, uint dwToRead, ref uint pdwRead, ref OVERLAPPED lpOverlapped);
 
@@ -570,7 +570,7 @@ namespace StormLibSharp.Native
         /// </summary>
         /// <param name="hFile">Handle to an open file.</param>
         /// <returns>When the function succeeds, it returns nonzero. On an error, the function returns false and GetLastError gives the error code.</returns>
-        [DllImport("StormLib.dll", EntryPoint = "SFileCloseFile")]
+        [DllImport("StormLib.dll", EntryPoint = "SFileCloseFile", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.I1)]
         public static extern bool SFileCloseFile(IntPtr hFile);
 
@@ -581,7 +581,7 @@ namespace StormLibSharp.Native
         /// <param name="hMpq">Handle to an open MPQ.</param>
         /// <param name="szFileName">Name of the file to check.</param>
         /// <returns>When the file is present in the MPQ, function returns true. When the file is not present in the MPQ archive, the function returns false and GetLastError returns ERROR_FILE_NOT_FOUND. If an error occured, the function returns false and GetLastError returns an error code different than ERROR_FILE_NOT_FOUND.</returns>
-        [DllImport("StormLib.dll", EntryPoint = "SFileHasFile")]
+        [DllImport("StormLib.dll", EntryPoint = "SFileHasFile", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.I1)]
         public static extern bool SFileHasFile(IntPtr hMpq, [In, MarshalAs(UnmanagedType.LPStr)] string szFileName);
 
@@ -592,7 +592,7 @@ namespace StormLibSharp.Native
         /// <param name="hFile">Handle to an open file. The file handle must have been created by SFileOpenFileEx.</param>
         /// <param name="szFileName">Receives the file name. The buffer must be at least MAX_PATH characters long.</param>
         /// <returns>When the function succeeds, it returns true and buffer pointed by szFileName contains name of the file. On an error, the function returns false and GetLastError returns an error code.</returns>
-        [DllImport("StormLib.dll", EntryPoint = "SFileGetFileName")]
+        [DllImport("StormLib.dll", EntryPoint = "SFileGetFileName", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.I1)]
         public static extern bool SFileGetFileName(IntPtr hFile, IntPtr szFileName);
 
@@ -606,9 +606,9 @@ namespace StormLibSharp.Native
         /// <param name="cbFileInfo">Size of the buffer pointed by pvFileInfo.</param>
         /// <param name="pcbLengthNeeded">Size, in bytes, needed to store the information into pvFileInfo.</param>
         /// <returns>When the function succeeds, it returns true. On an error, the function returns false and GetLastError returns error code. Possible error codes may be ERROR_INVALID_PARAMETER (unknown file info type) or ERROR_INSUFFICIENT_BUFFER (not enough space in the supplied buffer).</returns>
-        [DllImport("StormLib.dll", EntryPoint = "SFileGetFileInfo")]
+        [DllImport("StormLib.dll", EntryPoint = "SFileGetFileInfo", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.I1)]
-        public static extern bool SFileGetFileInfo(System.IntPtr hMpqOrFile, uint dwInfoType, System.IntPtr pvFileInfo, uint cbFileInfo, ref uint pcbLengthNeeded);
+        public static extern bool SFileGetFileInfo(IntPtr hMpqOrFile, uint dwInfoType, IntPtr pvFileInfo, uint cbFileInfo, ref uint pcbLengthNeeded);
 
         /// <summary>
         /// Extracts a file from MPQ to the local drive
@@ -619,7 +619,7 @@ namespace StormLibSharp.Native
         /// <param name="szExtracted">Specifies the name of a local file that will be created and will contain data from the extracted MPQ file.</param>
         /// <param name="dwSearchScope"></param>
         /// <returns>If the MPQ file has been successfully extracted into the target file, the function returns true. On an error, the function returns false and GetLastError returns an error code.</returns>
-        [DllImport("StormLib.dll", EntryPoint = "SFileExtractFile")]
+        [DllImport("StormLib.dll", EntryPoint = "SFileExtractFile", SetLastError = true)]
         [return: MarshalAsAttribute(UnmanagedType.I1)]
         public static extern bool SFileExtractFile(IntPtr hMpq, [In, MarshalAs(UnmanagedType.LPStr)] string szToExtract, [In, MarshalAs(UnmanagedType.LPStr)] string szExtracted, uint dwSearchScope = NativeConstants.SFILE_OPEN_FROM_MPQ); 
         #endregion
@@ -633,7 +633,7 @@ namespace StormLibSharp.Native
         /// <param name="szFileName">Name of a file to verify.</param>
         /// <param name="dwFlags">Specifies what to verify.</param>
         /// <returns>Return value is zero when no problerms were found. Otherwise, return value is a bit mask consisting of the possible found problems</returns>
-        [DllImport("StormLib.dll", EntryPoint = "SFileVerifyFile")]
+        [DllImport("StormLib.dll", EntryPoint = "SFileVerifyFile", SetLastError = true)]
         public static extern uint SFileVerifyFile(IntPtr hMpq, [In, MarshalAs(UnmanagedType.LPStr)] string szFileName, uint dwFlags);
 
         /// <summary>
@@ -644,7 +644,7 @@ namespace StormLibSharp.Native
         /// <param name="dwWhatToVerify"></param>
         /// <param name="szFileName"></param>
         /// <returns></returns>
-        [DllImport("StormLib.dll", EntryPoint = "SFileVerifyRawData")]
+        [DllImport("StormLib.dll", EntryPoint = "SFileVerifyRawData", SetLastError = true)]
         public static extern int SFileVerifyRawData(IntPtr hMpq, uint dwWhatToVerify, [In, MarshalAs(UnmanagedType.LPStr)] string szFileName);
 
         /// <summary>
@@ -653,7 +653,7 @@ namespace StormLibSharp.Native
         /// </summary>
         /// <param name="hMpq">Handle to an open MPQ archive to be verified.</param>
         /// <returns>Return value can be one of the values</returns>
-        [DllImport("StormLib.dll", EntryPoint = "SFileVerifyArchive")]
+        [DllImport("StormLib.dll", EntryPoint = "SFileVerifyArchive", SetLastError = true)]
         public static extern uint SFileVerifyArchive(IntPtr hMpq); 
         #endregion
 
@@ -667,7 +667,7 @@ namespace StormLibSharp.Native
         /// <param name="lpFindFileData">Pointer to SFILE_FIND_DATA structure that will receive information about the found file.</param>
         /// <param name="szListFile">Name of an extra list file that will be used for searching. Note that SFileAddListFile is called internally. The internal listfile in the MPQ is always used (if exists). This parameter can be NULL.</param>
         /// <returns>When the function succeeds, it returns handle to the MPQ search object and the SFILE_FIND_DATA structure is filled with information about the file. On an error, the function returns NULL and GetLastError gives the error code.</returns>
-        [DllImport("StormLib.dll", EntryPoint = "SFileFindFirstFile")]
+        [DllImport("StormLib.dll", EntryPoint = "SFileFindFirstFile", SetLastError = true)]
         public static extern IntPtr SFileFindFirstFile(IntPtr hMpq, [In, MarshalAs(UnmanagedType.LPStr)] string szMask, ref SFILE_FIND_DATA lpFindFileData, [In, MarshalAs(UnmanagedType.LPStr)] string szListFile);
 
         /// <summary>
@@ -677,7 +677,7 @@ namespace StormLibSharp.Native
         /// <param name="hFind">Search handle. Must have been obtained by call to SFileFindFirstFile.</param>
         /// <param name="lpFindFileData">Pointer to SFILE_FIND_DATA structure that will receive information about the found file. For layout of the structure, see SFileFindFirstFile.</param>
         /// <returns>When the function succeeds, it returns nonzero and the SFILE_FIND_DATA structure is filled with information about the file. On an error, the function returns zero and GetLastError gives the error code.</returns>
-        [DllImport("StormLib.dll", EntryPoint = "SFileFindNextFile")]
+        [DllImport("StormLib.dll", EntryPoint = "SFileFindNextFile", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.I1)]
         public static extern bool SFileFindNextFile(IntPtr hFind, ref SFILE_FIND_DATA lpFindFileData);
 
@@ -687,7 +687,7 @@ namespace StormLibSharp.Native
         /// </summary>
         /// <param name="hFind">Search handle. Must have been obtained by call to SFileFindFirstFile.</param>
         /// <returns>When the function succeeds, it returns nonzero. On an error, the function returns zero and GetLastError gives the error code.</returns>
-        [DllImport("StormLib.dll", EntryPoint = "SFileFindClose")]
+        [DllImport("StormLib.dll", EntryPoint = "SFileFindClose", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.I1)]
         public static extern bool SFileFindClose(IntPtr hFind);
 
@@ -700,7 +700,7 @@ namespace StormLibSharp.Native
         /// <param name="szMask">Name of the search mask. "*" will return all files.</param>
         /// <param name="lpFindFileData">Pointer to SFILE_FIND_DATA structure that will receive name of the found file. For layout of this structure, see SFileFindFirstFile.</param>
         /// <returns>When the function succeeds, it returns handle to the MPQ search object and the cFileName member of SFILE_FIND_DATA structure is filled with name of the file. On an error, the function returns NULL and GetLastError gives the error code.</returns>
-        [DllImport("StormLib.dll", EntryPoint = "SListFileFindFirstFile")]
+        [DllImport("StormLib.dll", EntryPoint = "SListFileFindFirstFile", SetLastError = true)]
         public static extern IntPtr SListFileFindFirstFile(IntPtr hMpq, [In, MarshalAs(UnmanagedType.LPStr)] string szListFile, [In, MarshalAs(UnmanagedType.LPStr)] string szMask, ref SFILE_FIND_DATA lpFindFileData);
 
         /// <summary>
@@ -710,7 +710,7 @@ namespace StormLibSharp.Native
         /// <param name="hFind">Search handle. Must have been obtained by call to SListFileFindFirstFile.</param>
         /// <param name="lpFindFileData">Pointer to SFILE_FIND_DATA structure that will receive name of the found file. For layout of the structure, see SFileFindFirstFile.</param>
         /// <returns>When the function succeeds, it returns nonzero and the cFileName member of SFILE_FIND_DATA structure is filled with name of the file. On an error, the function returns zero and GetLastError gives the error code.</returns>
-        [DllImport("StormLib.dll", EntryPoint = "SListFileFindNextFile")]
+        [DllImport("StormLib.dll", EntryPoint = "SListFileFindNextFile", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.I1)]
         public static extern bool SListFileFindNextFile(IntPtr hFind, ref SFILE_FIND_DATA lpFindFileData);
 
@@ -720,7 +720,7 @@ namespace StormLibSharp.Native
         /// </summary>
         /// <param name="hFind">Search handle. Must have been obtained by call to SListFileFindFirstFile.</param>
         /// <returns>When the function succeeds, it returns nonzero. On an error, the function returns zero and GetLastError gives the error code.</returns>
-        [DllImport("StormLib.dll", EntryPoint = "SListFileFindClose")]
+        [DllImport("StormLib.dll", EntryPoint = "SListFileFindClose", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.I1)]
         public static extern bool SListFileFindClose(IntPtr hFind);
 
@@ -734,7 +734,7 @@ namespace StormLibSharp.Native
         /// <param name="pdwMaxLocales">On input, this argument must point to a variable that contains maximum number of entries in plcLocales array. On output, this variable receives number of locales that are for the file. This argument cannot be NULL.</param>
         /// <param name="dwSearchScope">Specifies whether szFileName is a file name or a file index. The value of this parameter can either be SFILE_OPEN_FROM_MPQ or SFILE_OPEN_BY_INDEX. See SFileOpenFileEx for more information.</param>
         /// <returns>When the function succeeds, it returns ERROR_SUCCESS. On an error, the function returns an error code.</returns>
-        [DllImport("StormLib.dll", EntryPoint = "SFileEnumLocales")]
+        [DllImport("StormLib.dll", EntryPoint = "SFileEnumLocales", SetLastError = true)]
         public static extern int SFileEnumLocales(IntPtr hMpq, [In, MarshalAs(UnmanagedType.LPStr)] string szFileName, ref uint plcLocales, ref uint pdwMaxLocales, uint dwSearchScope); 
         #endregion
         
@@ -751,7 +751,7 @@ namespace StormLibSharp.Native
         /// <param name="dwFlags">Specifies additional options about how to add the file to the MPQ. For more information about these flags, see SFileAddFileEx.</param>
         /// <param name="phFile">Pointer to a variable of HANDLE type that receives a valid handle. Note that this handle can only be used in call to SFileWriteFile and SFileFinishFile. This handle must never be passed to another file function. Moreover, this handle must always be freed by SFileFinishFile, if not NULL. </param>
         /// <returns>When the function succeeds, it returns nonzero. On an error, the function returns false and GetLastError gives the error code.</returns>
-        [DllImport("StormLib.dll", EntryPoint = "SFileCreateFile")]
+        [DllImport("StormLib.dll", EntryPoint = "SFileCreateFile", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.I1)]
         public static extern bool SFileCreateFile(IntPtr hMpq, [In,MarshalAs(UnmanagedType.LPStr)] string szArchivedName, uint FileTime, uint dwFileSize, uint lcLocale, uint dwFlags, ref IntPtr phFile);
 
@@ -764,7 +764,7 @@ namespace StormLibSharp.Native
         /// <param name="dwSize">Size of the data that are to be written to the MPQ.</param>
         /// <param name="dwCompression">Specifies the type of data compression that is to be applied to the data, in case the amount of the data will reach size of one file sector. For more information about the available compressions, see SFileAddFileEx.</param>
         /// <returns>When the function succeeds, it returns nonzero. On an error, the function returns false and GetLastError gives the error code.</returns>
-        [DllImport("StormLib.dll", EntryPoint = "SFileWriteFile")]
+        [DllImport("StormLib.dll", EntryPoint = "SFileWriteFile", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.I1)]
         public static extern bool SFileWriteFile(IntPtr hFile, IntPtr pvData, uint dwSize, uint dwCompression);
 
@@ -774,7 +774,7 @@ namespace StormLibSharp.Native
         /// </summary>
         /// <param name="hFile">Handle to a new file within MPQ. This handle must have been obtained by calling SFileCreateFile. </param>
         /// <returns>When the function succeeds, it returns nonzero. On an error, the function returns false and GetLastError gives the error code.</returns>
-        [DllImport("StormLib.dll", EntryPoint = "SFileFinishFile")]
+        [DllImport("StormLib.dll", EntryPoint = "SFileFinishFile", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.I1)]
         public static extern bool SFileFinishFile(IntPtr hFile);
 
@@ -788,7 +788,7 @@ namespace StormLibSharp.Native
         /// <param name="dwFlags">Specifies additional options about how to add the file to the MPQ. For more information about these flags, see SFileAddFileEx.</param>
         /// <returns>When the function succeeds, it returns nonzero. On an error, the function returns false and GetLastError gives the error code.</returns>
         [Obsolete]
-        [DllImport("StormLib.dll", EntryPoint = "SFileAddFile")]
+        [DllImport("StormLib.dll", EntryPoint = "SFileAddFile", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.I1)]
         public static extern bool SFileAddFile(IntPtr hMpq, [In, MarshalAs(UnmanagedType.LPStr)] string szFileName, [In, MarshalAs(UnmanagedType.LPStr)] string szArchivedName, uint dwFlags);
 
@@ -803,7 +803,7 @@ namespace StormLibSharp.Native
         /// <param name="dwCompression">Compression method of the first file block. This parameter is ignored if MPQ_FILE_COMPRESS is not specified in dwFlags.</param>
         /// <param name="dwCompressionNext">Compression method of rest of the file. This parameter optional and is ignored if MPQ_FILE_COMPRESS is not specified in dwFlags.</param>
         /// <returns>When the function succeeds, it returns nonzero. On an error, the function returns false and GetLastError gives the error code.</returns>
-        [DllImport("StormLib.dll", EntryPoint = "SFileAddFileEx")]
+        [DllImport("StormLib.dll", EntryPoint = "SFileAddFileEx", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.I1)]
         public static extern bool SFileAddFileEx(IntPtr hMpq, [In, MarshalAs(UnmanagedType.LPStr)] string szFileName, [In, MarshalAs(UnmanagedType.LPStr)] string szArchivedName, uint dwFlags, uint dwCompression, uint dwCompressionNext = 0xFFFFFFFF);
 
@@ -818,7 +818,7 @@ namespace StormLibSharp.Native
         /// <param name="dwQuality">Specifies quality of WAVE compression. This parameter is ignored if MPQ_FILE_COMPRESS is not specified in dwFlags.</param>
         /// <returns>When the function succeeds, it returns nonzero. On an error, the function returns false and GetLastError gives the error code.</returns>
         [Obsolete]
-        [DllImport("StormLib.dll", EntryPoint = "SFileAddWave")]
+        [DllImport("StormLib.dll", EntryPoint = "SFileAddWave", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.I1)]
         public static extern bool SFileAddWave(IntPtr hMpq, [In, MarshalAs(UnmanagedType.LPStr)] string szFileName, [In, MarshalAs(UnmanagedType.LPStr)] string szArchivedName, uint dwFlags, uint dwQuality);
 
@@ -830,7 +830,7 @@ namespace StormLibSharp.Native
         /// <param name="szFileName">Name of a file to be removed.</param>
         /// <param name="dwSearchScope">Specifies whether szFileName is a file name or a file index. The value of this parameter can either be SFILE_OPEN_FROM_MPQ or SFILE_OPEN_BY_INDEX. See SFileOpenFileEx for more information.</param>
         /// <returns>When the function succeeds, it returns nonzero. On an error, the function returns false and GetLastError gives the error code.</returns>
-        [DllImport("StormLib.dll", EntryPoint = "SFileRemoveFile")]
+        [DllImport("StormLib.dll", EntryPoint = "SFileRemoveFile", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.I1)]
         public static extern bool SFileRemoveFile(IntPtr hMpq, [In, MarshalAs(UnmanagedType.LPStr)] string szFileName, uint dwSearchScope);
 
@@ -842,7 +842,7 @@ namespace StormLibSharp.Native
         /// <param name="szOldFileName">Name of a file to be renamed.</param>
         /// <param name="szNewFileName">New name of the file.</param>
         /// <returns>When the function succeeds, it returns nonzero. On an error, the function returns false and GetLastError gives the error code.</returns>
-        [DllImport("StormLib.dll", EntryPoint = "SFileRenameFile")]
+        [DllImport("StormLib.dll", EntryPoint = "SFileRenameFile", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.I1)]
         public static extern bool SFileRenameFile(IntPtr hMpq, [In, MarshalAs(UnmanagedType.LPStr)] string szOldFileName, [In, MarshalAs(UnmanagedType.LPStr)] string szNewFileName);
 
@@ -853,7 +853,7 @@ namespace StormLibSharp.Native
         /// <param name="hFile">Handle to the file in the MPQ. This handle must have been obtained by calling SFileOpenFileEx.</param>
         /// <param name="lcNewLocale">New locale ID for the file. For more onformation about locales, see SFileSetLocale.</param>
         /// <returns>When the function succeeds, it returns nonzero. On an error, the function returns false and GetLastError gives the error code.</returns>
-        [DllImport("StormLib.dll", EntryPoint = "SFileSetFileLocale")]
+        [DllImport("StormLib.dll", EntryPoint = "SFileSetFileLocale", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.I1)]
         public static extern bool SFileSetFileLocale(IntPtr hFile, uint lcNewLocale);
 
@@ -863,7 +863,7 @@ namespace StormLibSharp.Native
         /// </summary>
         /// <param name="DataCompression">Bit mask of data compression.</param>
         /// <returns>When the function succeeds, it returns nonzero. On an error, the function returns false and GetLastError gives the error code.</returns>
-        [DllImport("StormLib.dll", EntryPoint = "SFileSetDataCompression")]
+        [DllImport("StormLib.dll", EntryPoint = "SFileSetDataCompression", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.I1)]
         public static extern bool SFileSetDataCompression(uint DataCompression);
 
@@ -875,7 +875,7 @@ namespace StormLibSharp.Native
         /// <param name="AddFileCB">Pointer to the callback function.</param>
         /// <param name="pvData">User defined data that will be passed to the callback function.</param>
         /// <returns>The function never fails and always sets the callback.</returns>
-        [DllImport("StormLib.dll", EntryPoint = "SFileSetAddFileCallback")]
+        [DllImport("StormLib.dll", EntryPoint = "SFileSetAddFileCallback", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.I1)]
         public static extern bool SFileSetAddFileCallback(IntPtr hMpq, SFILE_ADDFILE_CALLBACK AddFileCB, IntPtr pvData); 
         #endregion
@@ -890,7 +890,7 @@ namespace StormLibSharp.Native
         /// <param name="pbInBuffer">Pointer to data that are to be imploded.</param>
         /// <param name="cbInBuffer">Length of the data pointed by pbInBuffer.</param>
         /// <returns>When the function succeeds, it returns nonzero. On an error, the function returns FALSE and GetLastError gives the error code.</returns>
-        [DllImport("StormLib.dll", EntryPoint = "SCompImplode")]
+        [DllImport("StormLib.dll", EntryPoint = "SCompImplode", SetLastError = true)]
         public static extern int SCompImplode(IntPtr pbOutBuffer, ref int pcbOutBuffer, IntPtr pbInBuffer, int cbInBuffer);
 
         /// <summary>
@@ -902,7 +902,7 @@ namespace StormLibSharp.Native
         /// <param name="pbInBuffer">Pointer to data that are to be exploded.</param>
         /// <param name="cbInBuffer">Length of the data pointed by pbInBuffer.</param>
         /// <returns>When the function succeeds, it returns nonzero. On an error, the function returns FALSE and GetLastError gives the error code.</returns>
-        [DllImport("StormLib.dll", EntryPoint = "SCompExplode")]
+        [DllImport("StormLib.dll", EntryPoint = "SCompExplode", SetLastError = true)]
         public static extern int SCompExplode(IntPtr pbOutBuffer, ref int pcbOutBuffer, IntPtr pbInBuffer, int cbInBuffer);
 
         /// <summary>
@@ -917,7 +917,7 @@ namespace StormLibSharp.Native
         /// <param name="nCmpType">An extra parameter, specific to compression type. This parameter is only used internally by Huffmann compression when applied after an ADPCM compression.</param>
         /// <param name="nCmpLevel">An extra parameter, specific to compression type. This parameter is used by ADPCM compression and is related to WAVE quality. See Remarks section for additional information.</param>
         /// <returns>When the function succeeds, it returns nonzero. On an error, the function returns FALSE and GetLastError gives the error code.</returns>
-        [DllImport("StormLib.dll", EntryPoint = "SCompCompress")]
+        [DllImport("StormLib.dll", EntryPoint = "SCompCompress", SetLastError = true)]
         public static extern int SCompCompress(IntPtr pbOutBuffer, ref int pcbOutBuffer, IntPtr pbInBuffer, int cbInBuffer, uint uCompressionMask, int nCmpType, int nCmpLevel);
 
         /// <summary>
@@ -929,7 +929,7 @@ namespace StormLibSharp.Native
         /// <param name="pbInBuffer">Pointer to data that are to be exploded.</param>
         /// <param name="cbInBuffer">Length of the data pointed by pbInBuffer.</param>
         /// <returns>When the function succeeds, it returns nonzero. On an error, the function returns FALSE and GetLastError gives the error code.</returns>
-        [DllImport("StormLib.dll", EntryPoint = "SCompDecompress")]
+        [DllImport("StormLib.dll", EntryPoint = "SCompDecompress", SetLastError = true)]
         public static extern int SCompDecompress(IntPtr pbOutBuffer, ref int pcbOutBuffer, IntPtr pbInBuffer, int cbInBuffer); 
         #endregion
 
