@@ -1,0 +1,11 @@
+--------------------------------------------
+-- StormLib Sharp
+--------------------------------------------
+
+.Net wrapper around the native StormLib(http://www.zezula.net/en/mpq/stormlib.html) library.
+
+--------------------------------------------
+-- Building StormLib Sharp
+--------------------------------------------
+
+OPEN /src/StormLibSharp.sln in Visual Studio 2010.

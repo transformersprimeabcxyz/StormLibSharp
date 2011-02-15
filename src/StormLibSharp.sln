@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StormLibSharp", "StormLibSharp\StormLibSharp.csproj", "{87FDD72A-D97E-4991-A5FF-163BCE2D91CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StormLibSharp.Demo", "StormLibSharp.Demo\StormLibSharp.Demo.csproj", "{BD1AA464-2B5B-49D3-A1BC-E77F93586002}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{87FDD72A-D97E-4991-A5FF-163BCE2D91CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87FDD72A-D97E-4991-A5FF-163BCE2D91CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87FDD72A-D97E-4991-A5FF-163BCE2D91CC}.Debug|x86.ActiveCfg = Debug|x86
+		{87FDD72A-D97E-4991-A5FF-163BCE2D91CC}.Debug|x86.Build.0 = Debug|x86
+		{87FDD72A-D97E-4991-A5FF-163BCE2D91CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87FDD72A-D97E-4991-A5FF-163BCE2D91CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87FDD72A-D97E-4991-A5FF-163BCE2D91CC}.Release|x86.ActiveCfg = Release|x86
+		{87FDD72A-D97E-4991-A5FF-163BCE2D91CC}.Release|x86.Build.0 = Release|x86
+		{BD1AA464-2B5B-49D3-A1BC-E77F93586002}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{BD1AA464-2B5B-49D3-A1BC-E77F93586002}.Debug|x86.ActiveCfg = Debug|x86
+		{BD1AA464-2B5B-49D3-A1BC-E77F93586002}.Debug|x86.Build.0 = Debug|x86
+		{BD1AA464-2B5B-49D3-A1BC-E77F93586002}.Release|Any CPU.ActiveCfg = Release|x86
+		{BD1AA464-2B5B-49D3-A1BC-E77F93586002}.Release|x86.ActiveCfg = Release|x86
+		{BD1AA464-2B5B-49D3-A1BC-E77F93586002}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
